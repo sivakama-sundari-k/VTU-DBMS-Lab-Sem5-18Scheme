@@ -1,0 +1,118 @@
+Create database p4;
+Use p4;
+create table student(usn varchar(10) primary key, sname varchar(25), address varchar(25), phone bigint, gender char(1));
+
+create table semsec (ssid varchar(5) primary key, sem int, sec char(1)); 
+
+create table class(usn varchar(10), ssid varchar(5), primary key(usn,ssid), foreign key (usn) references student(usn), foreign key(ssid) references semsec(ssid)); 
+
+create table subject(subcode varchar(8), title varchar(20), sem int, credits int, primary key(subcode)); 
+
+create table iamarks(usn varchar(10), subcode varchar(8), ssid varchar(5), test1 int,test2 int, test3 int, finalia int, primary key(usn,subcode,ssid), foreign key(usn) references student(usn)); 
+
+insert into student values('1OX18CS001', 'Akash', 'Bengaluru', 9980621905, 'M');
+ 
+insert into student values('1OX18CS002', 'Aditi', 'Bengaluru', 9980621305, 'F'); 
+
+insert into student values('1OX18CS003', 'Atharva', 'Bengaluru', 9980221305, 'M'); 
+
+insert into student values('1OX18CS004', 'Bharath', 'Bengaluru', 9980221303, 'M'); 
+
+insert into student values('1OX18CS005', 'Brinda', 'Bengaluru', 9980221302, 'F'); 
+
+insert into student values('1OX18CS006', 'Bhavya', 'Bengaluru', 9980221132, 'F'); 
+
+insert into student values('1OX18CS007', 'Catlyn ', 'Bengaluru', 9980221323, 'F'); 
+
+insert into student values('1OX18CS008', 'Rhea', 'Bengaluru', 9980221312, 'F'); 
+
+insert into student values('1OX18CS009', 'Greg ', 'Bengaluru', 9980221318, 'F'); 
+
+insert into student values('1OX18CS010', 'Ava', 'Hyderabad', 9980621205, 'F'); 
+
+insert into student values('1OX18CS011', 'Bhavana', 'Hyderabad', 992621205, 'F'); 
+
+insert into student values('1OX18CS012', 'Swetha', 'Bengaluru', 9980221290, 'F'); 
+
+insert into student values('1OX18CS013', 'Sneha', 'Bengaluru', 9980221320, 'F'); 
+
+insert into student values('1OX18CS014', 'Hari', 'Bengaluru', 9980221290, 'M'); 
+
+insert into student values('1OX18CS015', 'Medha', 'Bengaluru', 9980211390, 'F'); 
+
+insert into student values('1OX18CS016', 'Janani', 'Bengaluru', 9980223390, 'F'); 
+
+select * from student; 
+
+insert into semsec values('cse8a',8,'a'); 
+insert into semsec values('cse8b',8,'b'); 
+insert into semsec values('cse8c',8,'c'); 
+insert into semsec values('cse6a',6,'a'); 
+insert into semsec values('cse6b',6,'b'); 
+insert into semsec values('cse6c',6,'c'); 
+insert into semsec values('cse4a',4,'a'); 
+insert into semsec values('cse4b',4,'b'); 
+insert into semsec values('cse4c',4,'c'); 
+insert into semsec values('cse2a',2,'a'); 
+ 
+insert into semsec values('cse2b',2,'b'); 
+insert into semsec values('cse2c',2,'c'); 
+select * from semsec; 
+insert into class values('1OX18CS001', 'cse8a'); 
+insert into class values('1OX18CS002', 'cse8b'); 
+insert into class values('1OX18CS003', 'cse8c'); 
+insert into class values('1OX18CS004', 'cse6a'); 
+insert into class values('1OX18CS005', 'cse6b'); 
+insert into class values('1OX18CS006', 'cse6c'); 
+insert into class values('1OX18CS007', 'cse4a'); 
+insert into class values('1OX18CS008', 'cse4b'); 
+insert into class values('1OX18CS009', 'cse4c'); 
+insert into class values('1OX18CS010', 'cse2a'); 
+insert into class values('1OX18CS011', 'cse2b'); 
+insert into class values('1OX18CS012', 'cse2c'); 
+insert into class values('1OX18CS013', 'cse8c'); 
+insert into class values('1OX18CS014', 'cse6c'); 
+insert into class values('1OX18CS015', 'cse4c'); 
+insert into class values('1OX18CS016', 'cse2c'); 
+select * from class; 
+insert into subject values('18CS81', 'IOT',8, 4); 
+insert into subject values('18CS82', 'PROJECT',8, 3); 
+insert into subject values('18CS61', 'UNIX', 6, 3); 
+insert into subject values('18CS62', 'EVS', 6, 4); 
+insert into subject values('18CS63', 'WEB', 6, 4); 
+insert into subject values('18CS64', 'DS', 6, 3); 
+insert into subject values('18CS41', 'DMS', 4, 3); 
+insert into subject values('18CS42', 'DBMS', 4, 4); 
+insert into subject values('18CS43', 'EMT', 4, 3); 
+insert into subject values('18CS44', 'PYT', 4, 4); 
+insert into subject values('18CS45', 'ATC', 4, 3); 
+insert into subject values('18CS46', 'CO', 4, 3); 
+insert into subject values('18CS21', 'MEC', 2, 4); 
+insert into subject values('18CS22', 'PHY', 2, 4); 
+insert into subject values('18CS23', 'MAT2', 2, 4); 
+insert into subject values('18CS24', 'CHE', 2, 4); 
+insert into subject values('18CS25', 'ELE', 2, 3); 
+insert into subject values('18CS26', 'BEE', 2, 3); 
+insert into subject values('18CS27', 'CPP', 2, 3); 
+select * from subject; 
+insert into iamarks values('1OX18CS001', '18CS81', 'cse8a', 20, 19, 20, 0); 
+insert into iamarks values('1OX18CS001', '18CS82', 'cse8a', 10, 17, 19, 0); 
+insert into iamarks values('1OX18CS004', '18CS61', 'cse6a', 12, 10, 9, 0); 
+insert into iamarks values('1OX18CS004', '18CS62', 'cse6a', 8, 6, 5, 0); 
+insert into iamarks values('1OX18CS004', '18CS63', 'cse6a', 20, 20, 19, 0); 
+insert into iamarks values('1OX18CS004', '18CS64', 'cse6a', 13, 17, 19, 0); 
+select * from iamarks; 
+ 
+select s.*, ss.sem, ss.sec from student s, semsec ss, class c where s.usn=c.usn and ss.ssid=c.ssid and ss.sem=4 and ss.sec='c'; 
+ 
+select ss.sem, ss.sec, s.gender, count(s.gender) as count from student s, semsec ss, class c where s.usn=c.usn and ss.ssid=c.ssid group by ss.sem, ss.sec, s.gender order by sem; 
+ 
+create view stu_test1_marks_view as select test1, subcode from iamarks where usn ='1OX18CS004'; 
+select * from stu_test1_marks_view; 
+ 
+update iamarks set finalia = ((test1+test2+test3)-least(test1, least(test1,test3)))/2; 
+select * from iamarks; 
+ 
+select s.usn, s.sname, s.address,s.phone,s.gender, (case when ia.finalia between 17 and 20 then 'outstanding' when ia.finalia between 12 and 16 then 'average' else 'weak' end) as cat from student s, semsec ss, iamarks ia, subject sub where s.usn=ia.usn and ss.ssid=ia.ssid and sub.subcode = ia.subcode and sub.sem=8; 
+ 
+
